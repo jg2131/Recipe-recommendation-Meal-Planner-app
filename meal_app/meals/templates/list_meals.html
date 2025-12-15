@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8" />
+            <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+            <style>
+                /* Center the List Meals table and its contents */
+                table.meals-center {
+                    width: 50% !important; /* slight increase for a bit more space */
+                    margin: 0 auto;
+                }
+                table.meals-center th,
+                table.meals-center td {
+                    text-align: center;
+                }
+                /* Left-align the first (Meal) column so numbers line up */
+                table.meals-center th:first-child,
+                table.meals-center td:first-child {
+                    text-align: left;
+                }
+                /* Make columns sit closer together by reducing Meal column width
+                   and letting the table auto-size columns */
+                table.meals-center {
+                    table-layout: auto !important;
+                }
+                /* Override global fixed widths and tighten spacing */
+                table.meals-center th,
+                table.meals-center td {
+                    width: auto !important;
+                    padding-left: 6px;  /* slight padding bump */
+                    padding-right: 6px;
+                }
+                table.meals-center th.th_meal,
+                table.meals-center td:first-child { width: 160px !important; }
+                table.meals-center th.th_staple,
+                table.meals-center td:nth-child(2) { width: 110px !important; }
+                /* Add 10px extra gap to the right of the Meal column */
+                table.meals-center th.th_meal,
+                table.meals-center td:first-child {
+                    padding-right: 16px; /* 6px base + 10px extra */
+                }
+            </style>
+        </head>
+            <div class="topnav">
+                <a class="active" href="/">Home</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Meals
+                    <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="/add">Add Meal</a>
+                        <a href="/edit">Edit Meal</a>
+                        <a href="/list_meals">List Meals</a>
+                        <a href="find">Get Meal Info</a>
+                        <a href="/search">Search Ingredients</a>
+                        <a href="/inspire">Inspire Me</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Meal Plans
+                    <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="/create">Create Meal Plan</a>
+                        <a href="/load">Load Meal Plan</a>
+                        <a href="/delete">Delete Meal Plan</a>
+                    </div>
+                </div>
+            </div>
+            <br></br>
+        	<body>
+                <H1>Meals List</H1>
+                    <H2>Current meal count: {{len_meals}}</H2>
+                    <script src="{{ url_for('static', filename='/js/sorttable.js') }}"></script>
+                        <table class="sortable meals-center">
+                                <tr class="item">
+                                    <th class="th_meal">Meal</th>
+                                    <th class="th_staple">Staple</th>
+                                    <th>Last Made</th>
+                                </tr>
+                            {%for i in range(0, len_meals)%}
+                                <tr class="item">
+                                    <td>{{ i + 1 }}. {{meal_names[i]}}</td>
+                                    <td>{{staples[i]}}</td>
+                                    <td>{{last_date[i]}}</td>
+                                </tr>
+                            {%endfor%}
+                        </table>
+                    </body>
+                </html>

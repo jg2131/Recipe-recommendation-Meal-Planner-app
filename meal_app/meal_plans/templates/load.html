@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8" />
+            <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+        </head>
+            <div class="topnav">
+                <a class="active" href="/">Home</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Meals
+                    <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="/add">Add Meal</a>
+                        <a href="/edit">Edit Meal</a>
+                        <a href="/list_meals">List Meals</a>
+                        <a href="find">Get Meal Info</a>
+                        <a href="/search">Search Ingredients</a>
+                        <a href="/inspire">Inspire Me</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Meal Plans
+                    <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="/create">Create Meal Plan</a>
+                        <a href="/load">Load Meal Plan</a>
+                        <a href="/delete">Delete Meal Plan</a>
+                    </div>
+                </div>
+            </div>
+            <br></br>
+        	<body>
+		        <form method="post", action="">
+                    <H1>Choose meal or planner</H1>
+                    <ul>
+                        <li>
+                            <label for="meal">Load</label>
+                            <select name="Meal Plan" required>
+                                <option value="" disabled selected>-- Choose --</option>
+                                {% if len_meal_plans %}
+                                <optgroup label="Meal Planner">
+                                    {% for i in range(0, len_meal_plans) %}
+                                        <option value="plan:{{ meal_plans[i] }}">{{ meal_plans[i] }}</option>
+                                    {% endfor %}
+                                </optgroup>
+                                {% endif %}
+                                {% if len_meals %}
+                                <optgroup label="Meals">
+                                    {% for i in range(0, len_meals) %}
+                                        <option value="meal:{{ meals[i] }}">{{ meals[i] }}</option>
+                                    {% endfor %}
+                                </optgroup>
+                                {% endif %}
+                            </select>
+                        </li>
+                        <li>
+                            <input class="button" type="submit">
+                        </li>
+                    </ul>
+                </form>
+            </html>
+                     

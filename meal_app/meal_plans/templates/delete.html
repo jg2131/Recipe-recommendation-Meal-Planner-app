@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8" />
+            <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+        </head>
+        <div class="topnav">
+                <a class="active" href="/">Home</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Meals
+                    <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="/add">Add Meal</a>
+                        <a href="/edit">Edit Meal</a>
+                        <a href="/list_meals">List Meals</a>
+                        <a href="find">Get Meal Info</a>
+                        <a href="/search">Search Ingredients</a>
+                        <a href="/inspire">Inspire Me</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Meal Plans
+                    <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="/create">Create Meal Plan</a>
+                        <a href="/load">Load Meal Plan</a>
+                        <a href="/delete">Delete Meal Plan</a>
+                    </div>
+                </div>
+            </div>
+            <br></br>
+                <body>
+                    <form method="post", action="">
+                        <div class="delete-center">
+                        <H1>Delete Meals</H1>
+                        <ul>
+                            <li>
+                                <table id="checkboxtable">
+                                    {% for i in range(0, meals|length) %}
+                                        <tr>
+                                            <td id="checkboxtable_col1"><label for="meal_{{ i }}">{{ meals[i] }}</label></td>
+                                            <td id="checkboxtable_col2"><input type="checkbox" id="meal_{{ i }}" name="Meal {{ i }}" value="{{ meals[i] }}"></td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </li>
+                            <li>
+                                <input class="button" type="submit" name="submit" value="Delete Meals">
+                            </li>
+                        </ul>
+                        </div>
+                    </form>
+
+                    <form method="post", action="" style="margin-top:24px;">
+                        <div class="delete-center">
+                        <H1>Delete Meal Planner</H1>
+                        <ul>
+                            <li>
+                                <table id="checkboxtable">
+                                    {% for i in range(0, planners|length) %}
+                                        <tr>
+                                            <td id="checkboxtable_col1"><label for="plan_{{ i }}">{{ planners[i] }}</label></td>
+                                            <td id="checkboxtable_col2"><input type="checkbox" id="plan_{{ i }}" name="Plan {{ i }}" value="{{ planners[i] }}"></td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </li>
+                            <li>
+                                <input class="button" type="submit" name="submit" value="Delete Meal Planner">
+                            </li>
+                        </ul>
+                        </div>
+                    </form>
+                    <style>
+                        /* Center the delete lists under their headings on this page */
+                        .delete-center { max-width: 900px; margin: 0 auto; text-align: center; }
+                        .delete-center h1 { text-align: center; margin: 0 auto 10px; }
+                        .delete-center #checkboxtable { position: static; margin: 12px auto; table-layout: auto; width: auto; }
+                        /* Ensure long meal names are not truncated */
+                        .delete-center table th,
+                        .delete-center table td { width: auto; overflow: visible; white-space: normal; }
+                        .delete-center #checkboxtable_col1 { width: auto; }
+                        .delete-center #checkboxtable td { text-align: left; }
+                        /* Neutralize global checkbox offset inside this page */
+                        .delete-center input[type="checkbox"] { position: static; left: auto; }
+                        .delete-center .button { position: static !important; display: block; margin: 14px auto 0; left: auto; }
+                    </style>
+                </html>

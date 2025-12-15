@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Add Meal</title>
+    <link rel="stylesheet" type="text/css"
+          href="{{ url_for('static', filename='styles/styles.css') }}">
+
+    <!-- Page-specific layout for Add Meal -->
+    <style>
+        html {
+            font-size: 20px; /* make all fonts larger on this page */
+        }
+
+        .add-body {
+            background: linear-gradient(135deg, #ffe0b2, #ffe5c4);
+            min-height: 100vh;
+            margin: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .add-wrapper {
+            max-width: 1200px;
+            margin: 40px auto 60px;
+            padding: 0 16px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .add-card {
+            width: 100%;
+            max-width: 1200px;
+            background: #ffffffee;
+            border-radius: 24px;
+            padding: 40px 48px 44px;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+        }
+
+        .add-title {
+            margin: 0 0 6px;
+            font-size: 2.4rem;
+            text-align: center;
+            color: #0d47a1;
+        }
+
+        .add-subtitle {
+            margin: 0 0 24px;
+            text-align: center;
+            color: #555;
+            font-size: 1.2rem;
+        }
+
+        .add-form {
+            margin: 0;
+        \n            background: transparent;\n            border: none;\n            box-shadow: none;\n            padding: 0;\n          background: transparent !important;\n  border: 0 !important;\n  box-shadow: none !important;\n  padding: 0 !important;\n  width: auto !important;\n  border-radius: 0 !important;\n  width: 100% !important;\n  margin: 0 auto;\n}
+
+        .add-row {
+            max-width: 520px;
+            margin: 0 auto 24px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .field label {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .field input,
+        .field select {
+            padding: 8px 10px;
+            border-radius: 6px;
+            border: 1px solid #bbb;
+            font-size: 1.1rem;
+        }
+
+        .field input:focus,
+        .field select:focus {
+            outline: none;
+            border-color: #1e88e5;
+            box-shadow: 0 0 0 2px rgba(30, 136, 229, 0.18);
+        }
+
+        .section-title {
+            margin: 24px 0 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #153243;
+            text-align: center;
+        }
+
+                .ingredient-grid {
+            max-width: 100%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px 100px; /* row gap, column gap */
+            position: relative;
+        }
+
+        .ingredient-row {
+            display: grid;
+            grid-template-columns: 1.3fr 0.9fr 0.5fr;
+            align-items: center;
+            gap: 6px;
+            font-size: 1.1rem;
+        }
+
+        .ingredient-row label {
+            font-weight: 500;
+        }
+
+                .ingredient-row input {`r`n            padding: 6px 8px;`r`n            border-radius: 6px;`r`n            border: 1px solid #bbb;`r`n            width: 80px;`r`n            box-sizing: border-box;`r`n        }
+
+        .ingredient-unit {
+            font-size: 1rem;
+            color: #666;
+        }        /* Hide the aligned left border of inputs in right column to avoid a visible vertical line */
+        .ingredient-grid > .ingredient-row:nth-child(even) input {
+            border-left: none;
+        }
+
+        .tags-wrapper {
+            max-width: 320px;
+            margin: 10px auto 22px;
+        }
+
+        .tag-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .tag-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tag-row input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            margin: 0;
+        }
+
+        .tag-pill {
+            padding: 6px 20px;
+            border-radius: 999px;
+            background: #e3f2fd;
+            border: 1px solid #90caf9;
+            font-size: 1.1rem;
+            color: #114b5f;
+            white-space: nowrap;
+        }
+
+        .add-submit-row {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .add-submit {
+            padding: 10px 28px;
+            border-radius: 999px;
+            border: none;
+            background: #42a5f5;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 8px 18px rgba(66, 165, 245, 0.4);
+            transition: transform 0.12s ease, box-shadow 0.12s ease,
+                        background 0.12s ease;
+        }
+
+        .add-submit:hover {
+            background: #1e88e5;
+            transform: translateY(-1px);
+            box-shadow: 0 12px 24px rgba(30, 136, 229, 0.5);
+        }
+
+        @media (max-width: 900px) {
+            .ingredient-grid {
+                grid-template-columns: 1fr;
+            `r`n            position: relative;`r`n        }
+            .ingredient-row {
+                grid-template-columns: 1.1fr 0.9fr 0.4fr;
+            }
+        }
+            .ingredient-grid::before {`r`n            content: "";`r`n            position: absolute;`r`n            top: 0;`r`n            bottom: 0;`r`n            left: 50%;`r`n            width: 2px;`r`n            background: #cfd8dc; /* subtle separator */`r`n            transform: translateX(-50%);`r`n            pointer-events: none;`r`n        }`r`n        /* Align Meal Name and Staple on one centered line */
+        .top-fields { display: grid; grid-template-columns: repeat(2, max-content); justify-content: center; align-items: center; gap: 12px 40px; }
+        .top-fields .field { display: flex; flex-direction: row; align-items: center; gap: 10px; }
+        .top-fields .field label { min-width: 130px; text-align: right; }
+        .top-fields .field input, .top-fields .field select { width: 260px; }</style>
+</head>
+
+<body class="add-body">
+    <div class="topnav">
+        <a class="active" href="/">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Meals
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/add">Add Meal</a>
+                <a href="/edit">Edit Meal</a>
+                <a href="/list_meals">List Meals</a>
+                <a href="/find">Get Meal Info</a>
+                <a href="/search">Search Ingredients</a>
+                <a href="/inspire">Inspire Me</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Meal Plans
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/create">Create Meal Plan</a>
+                <a href="/load">Load Meal Plan</a>
+                <a href="/delete">Delete Meal Plan</a>
+            </div>
+        </div>
+    </div>
+
+    <main class="add-wrapper">
+        <section class="add-card">
+            <h1 class="add-title">Add Meal</h1>
+            <p class="add-subtitle">
+                Create a new recipe and organise its ingredients by type.
+            </p>
+
+            {% if error %}
+                <p style="color:#c00; text-align:center; font-weight:600; margin-bottom:10px;">
+                    {{ error }}
+                </p>
+            {% endif %}
+
+            <!-- IMPORTANT: explicit action to /add -->
+            <form method="post"
+                  action="{{ url_for('add.index') }}"
+                  autocomplete="off"
+                  class="add-form">
+
+                <!-- Meal Name + Staple (stacked, centred) -->
+                <div class="add-row top-fields">
+                    <div class="field">
+                        <label for="name">Meal Name</label>
+                        <input class="add_meal" type="text" id="name" name="Name" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="staple">Staple</label>
+                        <select class="add_meal" id="staple" name="Staple" required>
+                            <option value="" disabled selected>-- Select staple --</option>
+                            {% for i in range(0, len_staples) %}
+                                <option value="{{ staples[i] }}">{{ staples[i] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <!-- FRESH INGREDIENTS -->
+                <h2 class="section-title">Fresh Ingredients</h2>
+                <div class="ingredient-grid">
+                    {% for i in range(0, len_fresh_ingredients) %}
+                        <div class="ingredient-row">
+                            <label for="fresh_{{ i }}">{{ fresh_ingredients[i]|ingredient_emoji }}</label>
+                            <input class="add_meal" type="text"
+                                   id="fresh_{{ i }}"
+                                   name="Fresh {{ fresh_ingredients[i] }}">
+                            <span class="ingredient-unit">
+                                {{ fresh_ingredients_units[i] }}
+                            </span>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <!-- TINNED INGREDIENTS -->
+                <h2 class="section-title">Tinned Ingredients</h2>
+                <div class="ingredient-grid">
+                    {% for i in range(0, len_tinned_ingredients) %}
+                        <div class="ingredient-row">
+                            <label for="tinned_{{ i }}">{{ tinned_ingredients[i]|ingredient_emoji }}</label>
+                            <input class="add_meal" type="text"
+                                   id="tinned_{{ i }}"
+                                   name="Tinned {{ tinned_ingredients[i] }}">
+                            <span class="ingredient-unit">
+                                {{ tinned_ingredients_units[i] }}
+                            </span>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <!-- DRY INGREDIENTS -->
+                <h2 class="section-title">Dry Ingredients</h2>
+                <div class="ingredient-grid">
+                    {% for i in range(0, len_dry_ingredients) %}
+                        <div class="ingredient-row">
+                            <label for="dry_{{ i }}">{{ dry_ingredients[i]|ingredient_emoji }}</label>
+                            <input class="add_meal" type="text"
+                                   id="dry_{{ i }}"
+                                   name="Dry {{ dry_ingredients[i] }}">
+                            <span class="ingredient-unit">
+                                {{ dry_ingredients_units[i] }}
+                            </span>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <!-- DAIRY INGREDIENTS -->
+                <h2 class="section-title">Dairy Ingredients</h2>
+                <div class="ingredient-grid">
+                    {% for i in range(0, len_dairy_ingredients) %}
+                        <div class="ingredient-row">
+                            <label for="dairy_{{ i }}">{{ dairy_ingredients[i]|ingredient_emoji }}</label>
+                            <input class="add_meal" type="text"
+                                   id="dairy_{{ i }}"
+                                   name="Dairy {{ dairy_ingredients[i] }}">
+                            <span class="ingredient-unit">
+                                {{ dairy_ingredients_units[i] }}
+                            </span>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <!-- TAGS -->
+                <h2 class="section-title">Tags</h2>
+                <div class="tags-wrapper">
+                    <div class="tag-grid">
+                        {% for i in range(0, len_tags) %}
+                            <label class="tag-row" for="tag_{{ i }}">
+                                <input type="checkbox"
+                                       id="tag_{{ i }}"
+                                       name="Tag {{ tags[i] }}"
+                                       value="{{ tags[i] }}">
+                                <span class="tag-pill">{{ tags[i] }}</span>
+                            </label>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- SUBMIT -->
+                <div class="add-submit-row">
+                    <button type="submit" class="add-submit">
+                        Save Meal
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Recipe & Meal Planner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css', v='6') }}">
+</head>
+<body class="home-body">
+
+    <div class="topnav">
+        <a href="{{ url_for('home.index') }}" class="active">Home</a>
+        <a href="{{ url_for('find.index') }}">Meals</a>
+        <a href="{{ url_for('create.create_meal_plan') }}">Meal Plans</a>
+    </div>
+
+    <main class="home-main">
+        <header class="home-header">
+            <h1 class="home-title">Welcome back</h1>
+            <p class="home-subtitle">
+                Plan your week, track recipes, and turn the ingredients you already have into delicious meals.
+            </p>
+        </header>
+
+        <section class="home-main-card">
+            <h2 class="home-card-title">What would you like to do?</h2>
+
+            <form method="POST" class="actions-form">
+                <div class="actions-grid">
+
+                    <button type="submit" name="submit" value="Add Meal" class="primary-action" data-icon="add">
+                        <span class="primary-action-icon"></span>
+                        <span class="primary-action-text">
+                            <span class="primary-action-label">Add Meal</span>
+                            <span class="primary-action-help">Save a new recipe</span>
+                        </span>
+                    </button>
+
+                    <button type="submit" name="submit" value="Edit Meal" class="primary-action" data-icon="edit">
+                        <span class="primary-action-icon"></span>
+                        <span class="primary-action-text">
+                            <span class="primary-action-label">Edit Meal</span>
+                            <span class="primary-action-help">Update an existing recipe</span>
+                        </span>
+                    </button>
+
+                    <button type="submit" name="submit" value="Get Meal Info" class="primary-action" data-icon="info">
+                        <span class="primary-action-icon"></span>
+                        <span class="primary-action-text">
+                            <span class="primary-action-label">Get Meal Info</span>
+                            <span class="primary-action-help">View ingredients &amp; details</span>
+                        </span>
+                    </button>
+
+                    <button type="submit" name="submit" value="Search Ingredients" class="primary-action" data-icon="search">
+                        <span class="primary-action-icon"></span>
+                        <span class="primary-action-text">
+                            <span class="primary-action-label">Search Ingredients</span>
+                            <span class="primary-action-help">Find meals by what you have</span>
+                        </span>
+                    </button>
+
+                    <button type="submit" name="submit" value="List Meals" class="primary-action" data-icon="list">
+                        <span class="primary-action-icon"></span>
+                        <span class="primary-action-text">
+                            <span class="primary-action-label">List Meals</span>
+                            <span class="primary-action-help">Browse all stored recipes</span>
+                        </span>
+                    </button>
+
+                    <button type="submit" name="submit" value="Create Meal Plan" class="primary-action" data-icon="plan">
+                        <span class="primary-action-icon"></span>
+                        <span class="primary-action-text">
+                            <span class="primary-action-label">Create Meal Plan</span>
+                            <span class="primary-action-help">Build a plan for the week</span>
+                        </span>
+                    </button>
+
+                    <button type="submit" name="submit" value="Load Meal Plan" class="primary-action" data-icon="load">
+                        <span class="primary-action-icon"></span>
+                        <span class="primary-action-text">
+                            <span class="primary-action-label">Load Meal Plan</span>
+                            <span class="primary-action-help">Open a saved plan</span>
+                        </span>
+                    </button>
+
+                    <button type="submit" name="submit" value="Delete Meal Plan" class="primary-action" data-icon="delete">
+                        <span class="primary-action-icon"></span>
+                        <span class="primary-action-text">
+                            <span class="primary-action-label">Delete Meal Plan</span>
+                            <span class="primary-action-help">Clean up old plans</span>
+                        </span>
+                    </button>
+
+                </div>
+            </form>
+        </section>
+    </main>
+
+</body>
+</html>
+
+
+
+

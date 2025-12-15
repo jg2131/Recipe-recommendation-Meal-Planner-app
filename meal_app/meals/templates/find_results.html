@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8" />
+            <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+            <style>
+                /* Center the results content and tables on this page */
+                .meal-info-center { max-width: 900px; margin: 0 auto; text-align: center; }
+                .meal-info-center .display_meal_plan_header { width: 60%; margin: 0 auto 10px; text-align: center; }
+                .meal-info-center table { width: 60%; margin: 12px auto; }
+                .meal-info-center th, .meal-info-center td { text-align: center; }
+                .meal-info-center .location-details { margin: 6px auto 12px; width: 60%; text-align: center; }
+                /* Center the Return button */
+                #returnbutton { position: static !important; display: block; margin: 14px auto 0; }
+            </style>
+        </head>
+		<div class="topnav">
+			<a class="active" href="/">Home</a>
+			<div class="dropdown">
+				<button class="dropbtn">Meals
+				<i class="fa fa-caret-down"></i>
+				</button>
+				<div class="dropdown-content">
+					<a href="/add">Add Meal</a>
+					<a href="/edit">Edit Meal</a>
+					<a href="/list_meals">List Meals</a>
+					<a href="find">Get Meal Info</a>
+					<a href="/search">Search Ingredients</a>
+					<a href="/inspire">Inspire Me</a>
+				</div>
+			</div>
+			<div class="dropdown">
+				<button class="dropbtn">Meal Plans
+				<i class="fa fa-caret-down"></i>
+				</button>
+				<div class="dropdown-content">
+					<a href="/create">Create Meal Plan</a>
+					<a href="/load">Load Meal Plan</a>
+					<a href="/delete">Delete Meal Plan</a>
+				</div>
+			</div>
+		</div>
+            <br></br>
+            <body>
+                <div class="meal-info-center">
+                <h1 class="display_meal_plan_header">Meal info for {{meal_name}}!</h1>
+                    {% if location_details and location_details.get('Website') %}
+                    <div class="location-details">
+                        <div><strong>Website:</strong> {{ location_details['Website'] }}</div>
+                    </div>
+                    {% endif %}
+                    <table>
+                        <tr>
+                            <th class="ingredients">Fresh Ingredients</th>
+                            <th class="quantity">Quantity</th>
+                        </tr>
+                        {%for i in range(0, len_fresh_ingredients)%}
+                            <tr>
+                                <td>{{fresh_ingredients_keys[i]|ingredient_emoji}}</td>
+                                <td>{{fresh_ingredients_values[i]}}</td>
+                            </tr>
+                        {%endfor%}
+                    </table>
+                    <table>
+                        <tr>
+                            <th class="ingredients">Tinned Ingredients</th>
+                            <th class="quantity"> </th>
+                        </tr>
+                        {%for i in range(0, len_tinned_ingredients)%}
+                            <tr>
+                                <td>{{tinned_ingredients_keys[i]|ingredient_emoji}}</td>
+                                <td>{{tinned_ingredients_values[i]}}</td>
+                            </tr>
+                        {%endfor%}
+                    </table>
+                    <table>
+                        <tr>
+                            <th class="ingredients">Dry Ingredients</th>
+                            <th class="quantity"> </th>
+                        </tr>
+                        {%for i in range(0, len_dry_ingredients)%}
+                            <tr>
+                                <td>{{dry_ingredients_keys[i]|ingredient_emoji}}</td>
+                                <td>{{dry_ingredients_values[i]}}</td>
+                            </tr>
+                        {%endfor%}
+                    </table>
+                    <table>
+                        <tr>
+                            <th class="ingredients">Dairy Ingredients</th>
+                            <th class="quantity"> </th>
+                        </tr>
+                        {%for i in range(0, len_dairy_ingredients)%}
+                        <tr>
+                            <td>{{dairy_ingredients_keys[i]|ingredient_emoji}}</td>
+                            <td>{{dairy_ingredients_values[i]}}</td>
+                        </tr>
+                        {%endfor%}
+                    </table>
+                        <form method="post", action="" id="returnform">
+                            <input class="button" type="submit" value="Return" id="returnbutton">
+                        </form>
+                </div>
+            </body>
+                </html>
+

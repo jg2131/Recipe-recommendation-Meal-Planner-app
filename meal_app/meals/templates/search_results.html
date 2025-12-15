@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8" />
+            <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+        </head>
+            <div class="topnav">
+                <a class="active" href="/">Home</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Meals
+                    <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="/add">Add Meal</a>
+                        <a href="/edit">Edit Meal</a>
+                        <a href="/list_meals">List Meals</a>
+                        <a href="find">Get Meal Info</a>
+                        <a href="/search">Search Ingredients</a>
+                        <a href="/inspire">Inspire Me</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Meal Plans
+                    <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="/create">Create Meal Plan</a>
+                        <a href="/load">Load Meal Plan</a>
+                        <a href="/delete">Delete Meal Plan</a>
+                    </div>
+                </div>
+            </div>
+            <br></br>
+        	<body>
+                <div class="search-results-center">
+                    <H1 class="display_meal_plan_header">Meals containing {{ingredient|ingredient_emoji}}</H1>
+                    <ul>
+                        {%for i in range(0, len_meals)%}
+                            <li>{{meals[i]}}</li>
+                        {%endfor%}
+                    </ul>
+                    <form method="post", action="" id="returnform">
+                        <input class="button" type="submit" value="Return" id="returnbutton">
+                    </form>
+                </div>
+                <style>
+                    /* Center the search results content */
+                    .search-results-center { max-width: 900px; margin: 0 auto; text-align: center; }
+                    .search-results-center .display_meal_plan_header { width: 60%; margin: 0 auto 10px; text-align: center; }
+                    /* Center list block, keep default bullets and left-aligned items */
+                    .search-results-center ul { margin: 12px auto; display: inline-block; text-align: left; }
+                    .search-results-center ul li { margin: 4px 0; }
+                    /* Center the Return button */
+                    #returnbutton { position: static !important; display: block; margin: 14px auto 0; }
+                </style>
+            </body>
+        </html>

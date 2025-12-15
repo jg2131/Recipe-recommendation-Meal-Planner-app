@@ -1,0 +1,151 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+			<style>
+			/* Tag styles to match Add Meal */
+			.tags-wrapper { max-width: 320px; margin: 10px auto 22px; }
+			.tag-grid { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+			.tag-row { display: flex; align-items: center; gap: 8px; }
+			.tag-row input[type='checkbox'] { width: 16px; height: 16px; margin: 0; }
+			.tag-pill { padding: 6px 20px; border-radius: 999px; background: #e3f2fd; border: 1px solid #90caf9; font-size: 0.9rem; color: #114b5f; white-space: nowrap; }
+		</style>
+</head>
+	<div class="topnav">
+		<a class="active" href="/">Home</a>
+		<div class="dropdown">
+			<button class="dropbtn">Meals
+			<i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="/add">Add Meal</a>
+				<a href="/edit">Edit Meal</a>
+				<a href="/list_meals">List Meals</a>
+				<a href="find">Get Meal Info</a>
+				<a href="/search">Search Ingredients</a>
+				<a href="/inspire">Inspire Me</a>
+			</div>
+		</div>
+		<div class="dropdown">
+			<button class="dropbtn">Meal Plans
+			<i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="/create">Create Meal Plan</a>
+				<a href="/load">Load Meal Plan</a>
+				<a href="/delete">Delete Meal Plan</a>
+			</div>
+		</div>
+	</div>
+		<br></br>
+		<body>
+			<form method="post", action="", autocomplete="off">
+				<H1>Edit Meal</H1>
+				<ul>
+					<li>
+						<label for="name">Meal Name: </label>
+						<input class = "add_meal" type = "text" id="name" name="Name" value="{{meal_name}}" required></input>
+					</li>
+					<li>
+						<label for="staple">Staple:</label>
+						<select class = "add_meal" name="Staple" selected="Risotto">
+							{%for i in range(0, len_staples)%}
+								{%if staples[i] == staple%}
+									<option selected = "{{staple}}" value = "{{staples[i]}}">{{staples[i]}}</option>
+								{% else %}
+									<option value = "{{staples[i]}}">{{staples[i]}}</option>
+								{%endif%}
+							{%endfor%}
+						</select>
+					</li>
+					<li>
+						<label for="book">Book:</label>
+						<select class = "add_meal" name="Book">
+							{%for i in range(0, len_books)%}
+								{%if books[i] == book%}
+									<option selected = "{{book}}" value = "{{books[i]}}">{{books[i]}}</option> 
+								{% else %}
+									<option value = "{{books[i]}}">{{books[i]}}</option>
+								{%endif%}
+							{%endfor%}
+						</select>
+					</li>
+					<li>
+						<label for="page">Page no: </label>
+						<input class = "add_meal" type = "text" name = "Page"  value="{{page}}" />
+					</li>
+					<li>
+						<label for="website">Website: </label>
+						<input class = "add_meal" type = "text" name = "Website"  value="{{website}}" />
+					</li>
+					<H2>Fresh Ingredients</H2>
+						{%for i in range(0, len_fresh_ingredients)%}
+							<li>
+								<label for={{fresh_ingredients[i]}}>{{fresh_ingredients[i]|ingredient_emoji}} </label>
+									{%if fresh_ingredients[i] in current_fresh_ingredients_keys%}
+										<input class = "add_meal" type = "text" name = "Fresh {{fresh_ingredients[i]}}" value = "{{current_fresh_ingredients[fresh_ingredients[i]]}}"/>
+									{%else%}
+										<input class = "add_meal" type = "text" name = "Fresh {{fresh_ingredients[i]}}"/>
+									{%endif%}
+								<label class="units" for={{fresh_ingredients_units[i]}}>{{fresh_ingredients_units[i]}}</label>
+							</li>
+						{%endfor%}
+					<H2>Tinned Ingredients</H2>
+						{%for i in range(0, len_tinned_ingredients)%}
+							<li>
+								<label for={{tinned_ingredients[i]}}>{{tinned_ingredients[i]|ingredient_emoji}} </label>
+									{%if tinned_ingredients[i] in current_tinned_ingredients_keys%}
+									<input class = "add_meal" type = "text" name = "Tinned {{tinned_ingredients[i]}}" value = "{{current_tinned_ingredients[tinned_ingredients[i]]}}"/>
+									{%else%}
+									<input class = "add_meal" type = "text" name = "Tinned {{tinned_ingredients[i]}}"/>
+									{%endif%}
+								<label class="units" for={{tinned_ingredients_units[i]}}>{{tinned_ingredients_units[i]}}</label>
+							</li>
+						{%endfor%}
+					<H2>Dry Ingredients</H2>
+						{%for i in range(0, len_dry_ingredients)%}
+							<li>
+								<label for={{dry_ingredients[i]}}>{{dry_ingredients[i]|ingredient_emoji}} </label>
+									{%if dry_ingredients[i] in current_dry_ingredients_keys%}
+									<input class = "add_meal" type = "text" name = "Dry {{dry_ingredients[i]}}" value = "{{current_dry_ingredients[dry_ingredients[i]]}}"/>
+									{%else%}
+									<input class = "add_meal" type = "text" name = "Dry {{dry_ingredients[i]}}"/>
+									{%endif%}
+								<label class="units" for={{dry_ingredients_units[i]}}>{{dry_ingredients_units[i]}}</label>
+							</li>
+						{%endfor%}
+					<H2>Dairy Ingredients</H2>
+						{%for i in range(0, len_dairy_ingredients)%}
+							<li>
+								<label for={{dairy_ingredients[i]}}>{{dairy_ingredients[i]|ingredient_emoji}} </label>
+									{%if dairy_ingredients[i] in current_dairy_ingredients_keys%}
+									<input class = "add_meal" type = "text" name = "Dairy {{dairy_ingredients[i]}}" value = "{{current_dairy_ingredients[dairy_ingredients[i]]}}"/>
+									{%else%}
+									<input class = "add_meal" type = "text" name = "Dairy {{dairy_ingredients[i]}}"/>
+									{%endif%}
+								<label class="units" for={{dairy_ingredients_units[i]}}>{{dairy_ingredients_units[i]}}</label>
+							</li>
+						{%endfor%}
+										<H2>Tags</H2>
+					<div class='tags-wrapper'>
+						<div class='tag-grid'>
+							{% for i in range(0, len_tags) %}
+								<label class='tag-row' for='tag_{{ i }}'>
+									{% if current_tags[i] == 1 %}
+										<input type='checkbox' id='tag_{{ i }}' name='Tag {{ tags[i] }}' value='{{ tags[i] }}' checked>
+									{% else %}
+										<input type='checkbox' id='tag_{{ i }}' name='Tag {{ tags[i] }}' value='{{ tags[i] }}'>
+									{% endif %}
+									<span class='tag-pill'>{{ tags[i] }}</span>
+								</label>
+							{% endfor %}
+						</div>
+					</div>
+					<li>
+						<input class="button" type="submit">
+					</li>
+				</ul>
+			</form>
+		</body>
+	</html>
+

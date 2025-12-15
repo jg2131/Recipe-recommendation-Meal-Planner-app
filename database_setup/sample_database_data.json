@@ -1,0 +1,97 @@
+[
+  {"Name":"Chana Masala", "Staple":"Rice", "Book":"Sanjeev Kapoor", "Page":"112", "Website":"", 
+   "Fresh_Ingredients":{"Onions (Red)":"1", "Tomatoes":"2", "Garlic":"2", "Ginger":"1", "Green Chilies":"1", "Cilantro":"10"}, 
+   "Tinned_Ingredients":{"Chickpeas":"1"}, 
+   "Dry_Ingredients":{"Basmati Rice":"140", "Cumin Seeds":"1", "Coriander Powder":"1", "Garam Masala":"1", "Turmeric":"1"}, 
+   "Dairy_Ingredients":{}},
+
+  {"Name":"Dal Tadka", "Staple":"Rice", "Book":"Tarla Dalal", "Page":"76", "Website":"", 
+   "Fresh_Ingredients":{"Onions (White)":"0.5", "Tomatoes":"1", "Garlic":"3", "Ginger":"1", "Green Chilies":"1", "Cilantro":"10"}, 
+   "Tinned_Ingredients":{}, 
+   "Dry_Ingredients":{"Toor Dal":"150", "Basmati Rice":"140", "Cumin Seeds":"1", "Mustard Seeds":"1", "Turmeric":"1"}, 
+   "Dairy_Ingredients":{"Ghee":"30"}},
+
+  {"Name":"Aloo Gobi", "Staple":"Bread", "Book":"Home", "Page":"", "Website":"", 
+   "Fresh_Ingredients":{"Potatoes (New)":"300", "Cauliflower":"300", "Onions (Red)":"0.5", "Tomatoes":"1", "Garlic":"2", "Ginger":"1", "Green Chilies":"1", "Cilantro":"10"}, 
+   "Tinned_Ingredients":{}, 
+   "Dry_Ingredients":{"Cumin Seeds":"1", "Coriander Powder":"1", "Turmeric":"1"}, 
+   "Dairy_Ingredients":{}},
+
+  {"Name":"Palak Paneer", "Staple":"Bread", "Book":"Tarla Dalal", "Page":"143", "Website":"", 
+   "Fresh_Ingredients":{"Spinach":"300", "Onions (White)":"0.5", "Tomatoes":"1", "Garlic":"3", "Ginger":"1", "Green Chilies":"1"}, 
+   "Tinned_Ingredients":{}, 
+   "Dry_Ingredients":{"Cumin Seeds":"1", "Garam Masala":"1"}, 
+   "Dairy_Ingredients":{"Paneer":"200", "Cream":"50", "Ghee":"15"}},
+
+  {"Name":"Paneer Butter Masala", "Staple":"Bread", "Book":"Sanjeev Kapoor", "Page":"158", "Website":"", 
+   "Fresh_Ingredients":{"Onions (Red)":"1", "Tomatoes":"3", "Garlic":"3", "Ginger":"1", "Green Chilies":"0.5"}, 
+   "Tinned_Ingredients":{"Tomato Puree":"0.5"}, 
+   "Dry_Ingredients":{"Cashew Nuts":"40", "Garam Masala":"1"}, 
+   "Dairy_Ingredients":{"Butter":"40", "Cream":"80", "Paneer":"200"}},
+
+  {"Name":"Vegetable Pulao", "Staple":"Rice", "Book":"Home", "Page":"", "Website":"", 
+   "Fresh_Ingredients":{"Carrots":"1", "Peas":"100", "Beans (Green)":"100", "Onions (White)":"0.5", "Green Chilies":"1", "Mint":"10"}, 
+   "Tinned_Ingredients":{}, 
+   "Dry_Ingredients":{"Basmati Rice":"160", "Whole Spices (Pulao Mix)":"1"}, 
+   "Dairy_Ingredients":{"Ghee":"20"}},
+
+  {"Name":"Masoor Dal", "Staple":"Rice", "Book":"Home", "Page":"", "Website":"", 
+   "Fresh_Ingredients":{"Onions (Red)":"0.5", "Tomatoes":"1", "Garlic":"2", "Ginger":"1", "Green Chilies":"1", "Cilantro":"10"}, 
+   "Tinned_Ingredients":{}, 
+   "Dry_Ingredients":{"Masoor Dal":"160", "Turmeric":"1", "Cumin Seeds":"1", "Basmati Rice":"140"}, 
+   "Dairy_Ingredients":{"Ghee":"20"}},
+
+  {"Name":"Rajma (Kidney Bean Curry)", "Staple":"Rice", "Book":"Home", "Page":"", "Website":"", 
+   "Fresh_Ingredients":{"Onions (Red)":"1", "Garlic":"3", "Ginger":"1", "Green Chilies":"1", "Cilantro":"10"}, 
+   "Tinned_Ingredients":{"Kidney Beans":"1", "Plum Tomatoes":"1"}, 
+   "Dry_Ingredients":{"Rajma Masala":"1", "Basmati Rice":"140", "Cumin Seeds":"1"}, 
+   "Dairy_Ingredients":{"Ghee":"20"}},
+
+  {"Name":"Pav Bhaji", "Staple":"Bread", "Book":"Home", "Page":"", "Website":"", 
+   "Fresh_Ingredients":{"Potatoes (Baking)":"2", "Cauliflower":"200", "Peppers (Green)":"0.5", "Peas":"100", "Onions (Red)":"1", "Tomatoes":"2", "Garlic":"3", "Ginger":"1", "Lemon":"0.5"}, 
+   "Tinned_Ingredients":{}, 
+   "Dry_Ingredients":{"Pav Bhaji Masala":"1", "Bread Rolls":"4"}, 
+   "Dairy_Ingredients":{"Butter":"40"}},
+
+  {"Name":"Vegetable Biryani", "Staple":"Rice", "Book":"Sanjeev Kapoor", "Page":"204", "Website":"", 
+   "Fresh_Ingredients":{"Carrots":"1", "Potatoes (New)":"200", "Peas":"100", "Onions (White)":"1", "Mint":"10"}, 
+   "Tinned_Ingredients":{}, 
+   "Dry_Ingredients":{"Basmati Rice":"180", "Biryani Masala":"1"}, 
+   "Dairy_Ingredients":{"Yogurt":"120", "Ghee":"30"}},
+
+  {"Name":"Poha", "Staple":"Cereal", "Book":"Home", "Page":"", "Website":"", 
+   "Fresh_Ingredients":{"Onions (Red)":"0.5", "Potatoes (New)":"100", "Green Chilies":"1", "Curry Leaves":"10", "Lemon":"0.5", "Cilantro":"10"}, 
+   "Tinned_Ingredients":{}, 
+   "Dry_Ingredients":{"Poha (Flattened Rice)":"160", "Peanuts":"30", "Mustard Seeds":"1", "Turmeric":"1"}, 
+   "Dairy_Ingredients":{}},
+
+  {"Name":"Idli with Sambar", "Staple":"Rice", "Book":"Home", "Page":"", "Website":"", 
+   "Fresh_Ingredients":{"Onions (White)":"0.5", "Tomatoes":"1", "Carrots":"1", "Drumstick (Moringa)":"1"}, 
+   "Tinned_Ingredients":{"Tamarind Paste":"1"}, 
+   "Dry_Ingredients":{"Idli Rava":"200", "Toor Dal":"120", "Sambar Powder":"1"}, 
+   "Dairy_Ingredients":{}},
+
+  {"Name":"Chole Bhature", "Staple":"Bread", "Book":"Tarla Dalal", "Page":"220", "Website":"", 
+   "Fresh_Ingredients":{"Onions (Red)":"1", "Tomatoes":"2", "Garlic":"3", "Ginger":"1", "Green Chilies":"1"}, 
+   "Tinned_Ingredients":{"Chickpeas":"1"}, 
+   "Dry_Ingredients":{"Chole Masala":"1", "Flour (Maida)":"200", "Semolina":"30"}, 
+   "Dairy_Ingredients":{"Yogurt":"80", "Ghee":"20"}},
+
+  {"Name":"Kadhi Pakora", "Staple":"Rice", "Book":"Home", "Page":"", "Website":"", 
+   "Fresh_Ingredients":{"Onions (Red)":"0.5", "Green Chilies":"1", "Ginger":"1", "Cilantro":"10"}, 
+   "Tinned_Ingredients":{}, 
+   "Dry_Ingredients":{"Gram Flour (Besan)":"120", "Turmeric":"1", "Cumin Seeds":"1", "Basmati Rice":"140"}, 
+   "Dairy_Ingredients":{"Yogurt":"250", "Ghee":"20"}},
+
+  {"Name":"Aloo Paratha", "Staple":"Bread", "Book":"Home", "Page":"", "Website":"", 
+   "Fresh_Ingredients":{"Potatoes (Baking)":"2", "Onions (Red)":"0.5", "Green Chilies":"1", "Cilantro":"10"}, 
+   "Tinned_Ingredients":{}, 
+   "Dry_Ingredients":{"Whole Wheat Flour":"220", "Cumin Seeds":"1"}, 
+   "Dairy_Ingredients":{"Ghee":"30", "Yogurt":"60"}},
+
+  {"Name":"Vegetable Korma", "Staple":"Bread", "Book":"Home", "Page":"", "Website":"", 
+   "Fresh_Ingredients":{"Cauliflower":"200", "Carrots":"1", "Beans (Green)":"100", "Peas":"100", "Onions (White)":"1", "Garlic":"3", "Ginger":"1"}, 
+   "Tinned_Ingredients":{"Coconut Milk":"1"}, 
+   "Dry_Ingredients":{"Cashew Nuts":"30", "Garam Masala":"1"}, 
+   "Dairy_Ingredients":{"Yogurt":"80"}}
+]

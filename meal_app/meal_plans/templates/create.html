@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css"
+              href="{{ url_for('static', filename='styles/styles.css') }}">
+    </head>
+
+    <div class="topnav">
+        <a class="active" href="/">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Meals
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/add">Add Meal</a>
+                <a href="/edit">Edit Meal</a>
+                <a href="/list_meals">List Meals</a>
+                <a href="/find">Get Meal Info</a>
+                <a href="/search">Search Ingredients</a>
+                <a href="/inspire">Inspire Me</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Meal Plans
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/create">Create Meal Plan</a>
+                <a href="/load">Load Meal Plan</a>
+                <a href="/delete">Delete Meal Plan</a>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <body>
+        <form method="post" action="" class="wideform">
+            <h1>Meal Planner</h1>
+            <div class="grid-container">
+
+                {# helper macro so we don’t repeat the select code 28 times #}
+                {% macro meal_row(label, meal_name, qty_name) %}
+                    <li>
+                        <label class="create_form_label">{{ label }}</label>
+                        <select name="{{ meal_name }}">
+                            <option value=""></option>
+                            {% if all_meals %}
+                            <optgroup label="Meals">
+                                {% for m in all_meals %}
+                                    <option value="{{ m }}">{{ m }}</option>
+                                {% endfor %}
+                            </optgroup>
+                            {% endif %}
+                        </select>
+                        <select name="{{ qty_name }}" class="quantity-select">
+                            <option value=""></option>
+                            {% for i in range(1, 5) %}
+                                <option value="{{ i }}">{{ i }}</option>
+                            {% endfor %}
+                        </select>
+                    </li>
+                {% endmacro %}
+
+                <!-- WEEK 1 -------------------------------------------------->
+                <div>
+                    <ul>
+                        <h2>Week 1 Meals</h2>
+                        {% for i in range(1, 8) %}
+                            {{ meal_row("Meal " ~ i,  "Meal " ~ i,  "Quantity " ~ i) }}
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- WEEK 2 -------------------------------------------------->
+                <div>
+                    <ul>
+                        <h2>Week 2 Meals</h2>
+                        {% for i in range(1, 8) %}
+                            {% set idx = i + 10 %}
+                            {{ meal_row("Meal " ~ i,  "Meal " ~ idx,  "Quantity " ~ idx) }}
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                {# WEEK 3 removed per request #}
+
+            </div>
+
+            <style>
+                /* Override grid to two columns since Week 3 is removed */
+                .grid-container { grid-template-columns: auto auto; }
+            </style>
+            <div style="text-align:center; margin-top: 12px;">
+                <input class="button" type="submit" id="create-submit" value="Submit">
+            </div>
+        </form>
+    </body>
+</html>

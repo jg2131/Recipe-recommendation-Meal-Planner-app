@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8" />
+            <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+            <style>
+                /* Center the Planned Meals title and the meal info below */
+                h1.display_meal_plan_header { text-align: center; margin: 0 auto 10px; }
+                .plan-center { max-width: 900px; margin: 0 auto; text-align: center; }
+                .plan-center h2.display_meal_plan_header { text-align: center; margin: 6px auto; }
+                .plan-center table { width: 60%; margin: 12px auto; }
+                .plan-center th, .plan-center td { text-align: center; }
+            </style>
+        </head>
+        <div class="topnav">
+            <a class="active" href="/">Home</a>
+            <div class="dropdown">
+                <button class="dropbtn">Meals
+                  <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="/add">Add Meal</a>
+                    <a href="/edit">Edit Meal</a>
+                    <a href="/list_meals">List Meals</a>
+                    <a href="find">Get Meal Info</a>
+                    <a href="/search">Search Ingredients</a>
+                    <a href="/inspire">Inspire Me</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Meal Plans
+                  <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="/create">Create Meal Plan</a>
+                    <a href="/load">Load Meal Plan</a>
+                    <a href="/delete">Delete Meal Plan</a>
+                </div>
+            </div>
+        </div>
+        <br></br>
+            <body>
+                <h1 class="display_meal_plan_header">Planned Meals</h1>
+                <div class="plan-center">
+                {% for m in meals_detailed %}
+                    <h2 class="display_meal_plan_header">{{ m.name }}</h2>
+
+                    {% if m.fresh %}
+                    <table>
+                        <tr>
+                            <th class="ingredients">Fresh Ingredients</th>
+                            <th class="quantity">Quantity</th>
+                        </tr>
+                        {% for item, qty in m.fresh %}
+                        <tr>
+                            <td>{{ item }}</td>
+                            <td>{{ qty }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    {% endif %}
+
+                    {% if m.tinned %}
+                    <table>
+                        <tr>
+                            <th class="ingredients">Tinned Ingredients</th>
+                            <th class="quantity">Quantity</th>
+                        </tr>
+                        {% for item, qty in m.tinned %}
+                        <tr>
+                            <td>{{ item }}</td>
+                            <td>{{ qty }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    {% endif %}
+
+                    {% if m.dry %}
+                    <table>
+                        <tr>
+                            <th class="ingredients">Dry Ingredients</th>
+                            <th class="quantity">Quantity</th>
+                        </tr>
+                        {% for item, qty in m.dry %}
+                        <tr>
+                            <td>{{ item }}</td>
+                            <td>{{ qty }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    {% endif %}
+
+                    {% if m.dairy %}
+                    <table>
+                        <tr>
+                            <th class="ingredients">Dairy Ingredients</th>
+                            <th class="quantity">Quantity</th>
+                        </tr>
+                        {% for item, qty in m.dairy %}
+                        <tr>
+                            <td>{{ item }}</td>
+                            <td>{{ qty }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    {% endif %}
+
+                    <br>
+                {% endfor %}
+                </div>
+                        <form method="post", action="" id="returnform">
+                            <div style="margin: 10px 0;">
+                                <label for="plan_name" style="font-weight:600;">Plan name (optional)</label><br>
+                                <input type="text" id="plan_name" name="Plan_Name" placeholder="e.g., Weekly Shop" style="min-width: 260px; padding:6px;">
+                            </div>
+                            <!-- <input class="button" type="submit" value="Return" id="returnbutton"> -->
+                            <br></br>
+                            <input class="button" name="submit" type="submit" value="Update Dates" id="datebutton">
+                            <br></br>
+                            <input class="button" name="submit" type="submit" value="Save" id="savebutton">
+                        </form>
+                    <body>
+                </html>
